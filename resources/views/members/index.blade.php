@@ -180,7 +180,7 @@
     ══════════════════════════════════ -->
     <div class="form-card mb-5">
 
-        <h4>Add New Member</h4>
+        <h4> New Member</h4>
 
         <form
             action="{{ route('member.store') }}"
@@ -221,6 +221,59 @@
                     <div class="field-hint" id="email-hint"></div>
                 </div>
 
+                  <!-- Password -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Password <span class="req">*</span></label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Min. 8 characters"
+                        required
+                    >
+                    <div class="field-hint" id="password-hint"></div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Confirm Password <span class="req">*</span></label>
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        id="confirm_password"
+                        class="form-control"
+                        placeholder="Repeat password"
+                        required
+                    >
+                    <div class="field-hint" id="confirm-hint"></div>
+                </div>
+
+                  <!-- Bihar Location -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Bihar Location</label>
+                    <input
+                        type="text"
+                        name="bihar_location"
+                        class="form-control"
+                        placeholder="District / village"
+                                                required
+                    >
+                    <div class="field-hint"></div>
+                </div>
+
+                <!-- UK Location -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">UK Location</label>
+                    <input
+                        type="text"
+                        name="uk_location"
+                        class="form-control"
+                        placeholder="City / town"
+                        required
+                    >
+                    <div class="field-hint"></div>
+                </div>
                 <!-- Phone -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Phone <span class="req">*</span></label>
@@ -249,57 +302,7 @@
                     <div class="field-hint" id="postcode-hint"></div>
                 </div>
 
-                <!-- Password -->
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Password <span class="req">*</span></label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        class="form-control"
-                        placeholder="Min. 8 characters"
-                        required
-                    >
-                    <div class="field-hint" id="password-hint"></div>
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Confirm Password <span class="req">*</span></label>
-                    <input
-                        type="password"
-                        name="confirm_password"
-                        id="confirm_password"
-                        class="form-control"
-                        placeholder="Repeat password"
-                        required
-                    >
-                    <div class="field-hint" id="confirm-hint"></div>
-                </div>
-
-                <!-- Bihar Location -->
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Bihar Location</label>
-                    <input
-                        type="text"
-                        name="bihar_location"
-                        class="form-control"
-                        placeholder="District / village"
-                    >
-                    <div class="field-hint"></div>
-                </div>
-
-                <!-- UK Location -->
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">UK Location</label>
-                    <input
-                        type="text"
-                        name="uk_location"
-                        class="form-control"
-                        placeholder="City / town"
-                    >
-                    <div class="field-hint"></div>
-                </div>
+            
 
                 <!-- Profile Image with Preview -->
                 <div class="col-md-6 mb-3">
