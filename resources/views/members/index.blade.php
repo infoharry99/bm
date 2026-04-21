@@ -328,7 +328,7 @@
                 </div>
 
                 <!-- Submit -->
-                <div class="col-md-6  mb-4">
+                <div class="col-md-6  mb-3" style="margin-top: 25px;">
                     <button type="submit" class="gradient-btn" id="submitBtn">
                         Add Member
                     </button>
