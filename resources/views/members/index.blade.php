@@ -257,20 +257,20 @@
 
                   <!-- Bihar Location -->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Bihar Location</label>
+                    <label class="form-label">Bihar Location<span class="req">*</span></label>
                     <input
                         type="text"
                         name="bihar_location"
                         class="form-control"
                         placeholder="District / village"
-                                                required
+                        required
                     >
                     <div class="field-hint"></div>
                 </div>
 
                 <!-- UK Location -->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">UK Location</label>
+                    <label class="form-label">UK Location<span class="req">*</span></label>
                     <input
                         type="text"
                         name="uk_location"
