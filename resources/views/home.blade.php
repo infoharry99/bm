@@ -30,13 +30,7 @@
                 font-family: Arial, sans-serif;
             }
 
-            .row {
-                display: flex;
-                gap: 20px;
-                padding: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
+            .
 
             .image {
                 flex: 1;
@@ -82,15 +76,6 @@
             }
 
             h2 { margin-top: 0; }
-
-            .row {
-                display: flex;
-                gap: 40px;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-
-            .row.reverse { flex-direction: row-reverse; }
 
             .text, .image {
                 flex: 1;
@@ -160,7 +145,7 @@
         @include('layouts.navbar')
 
         <div class ="section" style="padding:0 !important;"> 
-            <img src="/homebanner.jpg" alt="Image" style="width:100%; object-fit:cover; ;">
+            <img src="/homebanner.jpg" alt="Image" style="width:100%; object-fit:cover; border-radius:10px;">
         </div>  
 
         <!-- ✅ ABOUT US -->
@@ -193,4 +178,5 @@
             </div>
         </div>
 
-     @include('layouts.footer')
+ @include('layouts.footer')
+    

@@ -1,50 +1,50 @@
-   <div class="footer">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="footer-contact">
-                        <h2>Location</h2>
-                        <p><i class="fa fa-map-marker-alt"></i>Hounslow, London, UK</p>
-                        <p><i class="fa fa-envelope"></i>info@Biharimuslim.co.uk</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="footer-link">
-                        <h2>Helpful Links </h2>
-                        <a href="/contact">Contact Us</a>
-                          <a href="/coming-soon">Upcoming Events</a>
-                        <a href="/coming-soon">Latest Blog</a>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="footer-link">
-                        <h2>Useful Links</h2>
-                        <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
-                        <a href="#" data-toggle="modal" data-target="#privacyModal">Cookies</a>
-                        <a href="/coming-soon">FQAs</a>
-                    </div>
+<!-- ================= FOOTER START ================= -->
+<div class="footer">
+    <div class="container">
+        <div class="row" style="margin-top: 50px; justify-content: center; align-items: center; margin: right 10px;">
+
+		<div class="col-md-2">
+		</div>
+	
+            <!-- Location -->
+            <div class="col-md-4">
+                <div class="footer-contact">
+                    <h2>Location</h2>
+                    <p><i class="fa fa-map-marker-alt"></i> Hounslow, London, UK</p>
+                    <p><i class="fa fa-envelope"></i> info@Biharimuslim.co.uk</p>
                 </div>
             </div>
-            <div class="row copyright">
-                <div class="col-md-4">
-                    <p>&copy; <a href="#">biharimuslim</a>, All Right Reserved.</p>
+
+            <!-- Helpful Links -->
+            <div class="col-md-4">
+                <div class="footer-link">
+					<h2>Contact </h2>
+                    <a href="/contact">Contact Us</a>
+					 <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
+                    <a href="#" data-toggle="modal" data-target="#privacyModal">Cookies</a>
                 </div>
-                <div class="col-md-4">
-                    <p>Designed By <a href="">Sofinish Technologies</a></p>
-                </div>
+            </div>
+
+        </div>
+
+        <!-- Copyright -->
+        <div class="row copyright">
+            <div class="col-md-6">
+                <p>&copy; 2026 <a href="#">biharimuslim</a>, All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-right text-center">
+                <p>Designed By <a href="#" target="_blank">Sofinish Technologies</a></p>
             </div>
         </div>
-        <!-- Footer End -->
-<style>
-    .modal-body {
-    margin-top:20px;
-    max-height: 70vh;
-    overflow-y: auto;
-}
-</style>
+    </div>
+</div>
+<!-- ================= FOOTER END ================= -->
+
+
 <!-- PRIVACY POLICY MODAL -->
 <div class="modal fade" id="privacyModal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable" style="margin-top:10px;">
-        <div class="modal-content"style="margin-top: 78px;">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title">Privacy Policy</h5>
@@ -52,7 +52,6 @@
             </div>
 
             <div class="modal-body">
-
                 <p>
                     This Privacy Policy describes how UKBihariMuslim.com ("we," "us," or "our")
                     collects, uses, and protects your personal information.
@@ -62,7 +61,7 @@
                 <ul>
                     <li>Name, email, and form data</li>
                     <li>Photographs uploaded or shared</li>
-                    <li>Usage data (IP, browser)</li>
+                    <li>Usage data (IP address, browser)</li>
                 </ul>
 
                 <h5>How We Use Your Information</h5>
@@ -80,18 +79,18 @@
                 </ul>
 
                 <h5>Contact</h5>
-                <p>Use Contact Us page for any request.</p>
-
+                <p>Please use our Contact Us page for any privacy requests.</p>
             </div>
 
         </div>
     </div>
 </div>
 
-        <!-- Back to top button -->
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-        <!-- JavaScript Libraries -->
+<!-- Back to Top -->
+<a href="#" class="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+  <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>
@@ -103,7 +102,7 @@
         <script src="mail/contact.js"></script>
         <script src="js/main.js"></script>
 
-        <script>
+        <!-- <script>
         window.addEventListener("scroll", function () {
             const navbar = document.querySelector(".navbar");
             if (window.scrollY > 20) {
@@ -112,7 +111,7 @@
                 navbar.classList.remove("scrolled");
             }
         });
-        </script>
+        </script> -->
 
     </body>
 </html>

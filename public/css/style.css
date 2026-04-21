@@ -2006,3 +2006,102 @@ a:focus {
 .sidebar .image-widget img:hover {
     transform: scale(1.1);
 }
+/*******************************/
+/********* Footer CSS **********/
+/*******************************/
+
+.footer {
+    position: relative;
+    margin-top: 60px;
+    padding-top: 80px;
+    background: #20212b;
+    color: #ffffff;
+}
+
+.footer h2 {
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fdbe33;
+}
+
+.footer-contact p,
+.footer-link a {
+    font-size: 15px;
+}
+
+.footer-link a {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.footer-link a::before {
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer-link a:hover {
+    color: #fdbe33;
+    letter-spacing: 1px;
+}
+
+.footer-contact p i {
+    width: 25px;
+    color: #fdbe33;
+}
+
+.footer .copyright {
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+}
+
+.footer .copyright p {
+    margin: 0;
+    color: #999999;
+}
+
+.footer .copyright p a {
+    color: #ffffff;
+}
+
+.footer .copyright p a:hover {
+    color: #fdbe33;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767.98px) {
+    .footer {
+        text-align: center;
+    }
+
+    .footer .copyright .text-md-right {
+        text-align: center !important;
+        margin-top: 10px;
+    }
+}
+
+/* Back To Top Button */
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 20px;
+    bottom: 20px;
+    background: #fdbe33;
+    color: #000;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    z-index: 99;
+}
+
+.back-to-top:hover {
+    background: #ffffff;
+}
