@@ -21,12 +21,13 @@
 					<h2>Contact </h2>
                     <a href="/contact">Contact Us</a>
 					 <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
-                    <a href="#" data-toggle="modal" data-target="#privacyModal">Cookies</a>
+                    <a href="#" data-toggle="modal" data-target="#cookiesModal">Cookies</a>
                 </div>
             </div>
 
         </div>
 
+		
         <!-- Copyright -->
         <div class="row copyright">
             <div class="col-md-6">
@@ -80,6 +81,54 @@
 
                 <h5>Contact</h5>
                 <p>Please use our Contact Us page for any privacy requests.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- COOKIES POLICY MODAL -->
+<div class="modal fade" id="cookiesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Cookies Policy</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    This website uses only essential cookies to ensure the proper functioning of the website.
+                    We do not use any non-essential cookies, and we do not sell your personal information.
+                </p>
+
+                <h5>What Are Cookies?</h5>
+                <p>
+                    Cookies are small text files stored on your device when you visit a website.
+                    They help the website remember your preferences and improve your experience.
+                </p>
+
+                <h5>How We Use Cookies</h5>
+                <p>We use cookies only for essential functionality, such as:</p>
+                <ul>
+                    <li>Authentication (e.g., keeping you logged in)</li>
+                    <li>Security (e.g., preventing fraud)</li>
+                    <li>Session management (e.g., maintaining your preferences during a session)</li>
+                </ul>
+
+                <h5>Your Choices</h5>
+                <p>
+                    You can choose to accept or reject the use of essential cookies.
+                    However, rejecting cookies may affect the functionality of the website.
+                </p>
+
+                <h5>Do Not Sell My Personal Information</h5>
+                <p>
+                    We do not sell your personal information to third parties.
+                </p>
+
             </div>
 
         </div>
