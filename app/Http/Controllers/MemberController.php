@@ -36,6 +36,8 @@ class MemberController extends Controller
                     $message->to('info@iharimuslim.co.uk')
                             ->subject('New Member Created');
                 });
+
+        session()->flash('success', 'Registration complete. Please wait for an admin to activate your account!');
         return back()->with('success','Member Added Successfully!');
     }
 
