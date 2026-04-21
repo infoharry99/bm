@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <div class="footer-link">
 					<h2>Links </h2>
-                    <a href="/contact">Contact Us</a>
+                    <a href="/contact">Contact</a>
 					 <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
                     <a href="#" data-toggle="modal" data-target="#cookiesModal">Cookies</a>
                 </div>

@@ -13,7 +13,7 @@
                         <li class="nav-item"><a href="/member" class="nav-link">Members</a></li>
                         <li class="nav-item"><a href="/coming-soon" class="nav-link">Events</a></li>
                         <li class="nav-item"><a href="/coming-soon" class="nav-link">Gallery</a></li>
-                        <li class="nav-item"><a href="/contact" class="nav-link">Contact US</a></li>
+                        <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                         @if(session()->has('member_id'))
                             <li class="nav-item"><a href="/dashboard" class="nav-link">{{session()->get('member_name')}}</a></li>
                             <li class="nav-item"><a href="/member-logout" class="nav-link">Logout</a></li>
