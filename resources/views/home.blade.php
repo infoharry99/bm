@@ -160,7 +160,7 @@
         @include('layouts.navbar')
 
         <div class ="section" style="padding:0 !important;"> 
-            <img src="/homebanner.jpg" alt="Image" style="width:100%; height:400px; object-fit:cover; border-radius:10px;">
+            <img src="/homebanner.jpg" alt="Image" style="width:100%; object-fit:cover;">
         </div>  
 
         <!-- ✅ ABOUT US -->
