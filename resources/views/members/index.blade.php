@@ -15,6 +15,7 @@
     .navbar {
         top: 0 !important;
     }
+
     /* ── Member Cards ── */
     .member-card {
         border-radius: 15px;
@@ -148,21 +149,12 @@
         width: 100%;
     }
 
-    .gradient-btn:hover { opacity: 0.91; }
+    .gradient-btn:hover  { opacity: 0.91; }
     .gradient-btn:active { transform: scale(0.99); }
     .gradient-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* ── Page heading ── */
-    h2 {
-        font-weight: 700;
-        color: #3046A2;
-    }
-
-    /* ── Search section ── */
-    .search-area {
-        max-width: 460px;
-        margin: 0 auto;
-    }
+    h2 { font-weight: 700; color: #3046A2; }
 
 </style>
 
@@ -175,18 +167,20 @@
 
     <h2 class="text-center mb-4">Members</h2>
 
+    {{-- ── Flash messages (shown ONCE, at the top) ── --}}
     @if(session('success'))
         <div class="alert alert-success text-center">{{ session('success') }}</div>
     @endif
     @if(session('error'))
         <div class="alert alert-danger text-center">{{ session('error') }}</div>
     @endif
+
     <!-- ══════════════════════════════════
          ADD MEMBER FORM
     ══════════════════════════════════ -->
     <div class="form-card mb-5">
 
-        <h4> New Member</h4>
+        <h4>New Member</h4>
 
         <form
             action="{{ route('member.store') }}"
@@ -202,124 +196,73 @@
                 <!-- Name -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Name <span class="req">*</span></label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        class="form-control"
-                        placeholder="Full name"
-                        required
-                    >
+                    <input type="text" name="name" id="name"
+                        class="form-control" placeholder="Full name" required>
                     <div class="field-hint" id="name-hint"></div>
                 </div>
 
                 <!-- Email -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Email <span class="req">*</span></label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        class="form-control"
-                        placeholder="you@example.com"
-                        required
-                    >
+                    <input type="email" name="email" id="email"
+                        class="form-control" placeholder="you@example.com" required>
                     <div class="field-hint" id="email-hint"></div>
                 </div>
 
-                  <!-- Password -->
+                <!-- Password -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Password <span class="req">*</span></label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        class="form-control"
-                        placeholder="Min. 8 characters"
-                        required
-                    >
+                    <input type="password" name="password" id="password"
+                        class="form-control" placeholder="Min. 8 characters" required>
                     <div class="field-hint" id="password-hint"></div>
                 </div>
 
                 <!-- Confirm Password -->
+                {{-- name="password_confirmation" matches Laravel's confirmed rule --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Confirm Password <span class="req">*</span></label>
-                    <input
-                        type="password"
-                        name="confirm_password"
-                        id="confirm_password"
-                        class="form-control"
-                        placeholder="Repeat password"
-                        required
-                    >
+                    <input type="password" name="password_confirmation" id="confirm_password"
+                        class="form-control" placeholder="Repeat password" required>
                     <div class="field-hint" id="confirm-hint"></div>
                 </div>
 
-                  <!-- Bihar Location -->
+                <!-- Bihar Location  ✅ id attribute added -->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Bihar Location<span class="req">*</span></label>
-                    <input
-                        type="text"
-                        name="bihar_location"
-                        class="form-control"
-                        placeholder="District / village"
-                        required
-                    >
-                    <div class="field-hint"></div>
+                    <label class="form-label">Bihar Location <span class="req">*</span></label>
+                    <input type="text" name="bihar_location" id="bihar_location"
+                        class="form-control" placeholder="District / village" required>
+                    <div class="field-hint" id="bihar_location-hint"></div>
                 </div>
 
-                <!-- UK Location -->
+                <!-- UK Location  ✅ id attribute added -->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">UK Location<span class="req">*</span></label>
-                    <input
-                        type="text"
-                        name="uk_location"
-                        class="form-control"
-                        placeholder="City / town"
-                        required
-                    >
-                    <div class="field-hint"></div>
+                    <label class="form-label">UK Location <span class="req">*</span></label>
+                    <input type="text" name="uk_location" id="uk_location"
+                        class="form-control" placeholder="City / town" required>
+                    <div class="field-hint" id="uk_location-hint"></div>
                 </div>
+
                 <!-- Phone -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Phone <span class="req">*</span></label>
-                    <input
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        class="form-control"
-                        placeholder="+44 7700 000000"
-                        required
-                    >
+                    <input type="text" name="phone" id="phone"
+                        class="form-control" placeholder="+44 7700 000000" required>
                     <div class="field-hint" id="phone-hint"></div>
                 </div>
 
                 <!-- Postcode -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Postcode <span class="req">*</span></label>
-                    <input
-                        type="text"
-                        name="postcode"
-                        id="postcode"
-                        class="form-control"
-                        placeholder="SW1A 1AA"
-                        required
-                    >
+                    <input type="text" name="postcode" id="postcode"
+                        class="form-control" placeholder="SW1A 1AA" required>
                     <div class="field-hint" id="postcode-hint"></div>
                 </div>
-
-            
 
                 <!-- Profile Image with Preview -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Profile Image</label>
-                    <input
-                        type="file"
-                        name="image"
-                        id="image"
-                        class="form-control"
-                        accept="image/*"
-                    >
+                    <input type="file" name="image" id="image"
+                        class="form-control" accept="image/*">
                     <div class="preview-wrap" id="previewWrap">
                         <img src="" alt="Preview" class="preview-avatar" id="previewImg">
                         <span class="preview-filename" id="previewName"></span>
@@ -328,7 +271,7 @@
                 </div>
 
                 <!-- Submit -->
-                <div class="col-md-6  mb-3" style="margin-top: 25px;">
+                <div class="col-md-6 mb-3" style="margin-top: 25px;">
                     <button type="submit" class="gradient-btn" id="submitBtn">
                         Add Member
                     </button>
@@ -339,72 +282,62 @@
         </form>
     </div><!-- /.form-card -->
 
-    @if(session('success'))
-        <div class="alert alert-success text-center">{{ session('success') }}</div>
-    @endif
 
-    @if(session('error'))
-        <div class="alert alert-danger text-center">{{ session('error') }}</div>
-    @endif  
-  @php use Illuminate\Support\Facades\File; @endphp
-    @if(session()->has('member_id'))
-        <div class="row mb-4">
-            
-            <div class="col-md-6 mx-auto">
-                <input
-                    type="text"
-                    id="memberSearch"
-                    class="form-control"
-                    placeholder="Search by name, email, phone, Bihar, UK..."
-                >
+    <!-- ══════════════════════════════════
+         SEARCH + MEMBER LIST
+    ══════════════════════════════════ -->
+    @php use Illuminate\Support\Facades\File; @endphp
+
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <input type="text" id="memberSearch" class="form-control"
+                placeholder="Search by name, email, phone, Bihar, UK...">
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach($members as $m)
+
+        @php
+            $initials = '';
+            $parts    = explode(' ', $m->name);
+            if (count($parts) >= 2) {
+                $initials = strtoupper(substr($parts[0], 0, 1) . substr(end($parts), 0, 1));
+            } else {
+                $initials = strtoupper(substr($m->name, 0, 1));
+            }
+            $imagePath = public_path('members/' . $m->image);
+            $hasImage  = $m->image && File::exists($imagePath);
+        @endphp
+
+        <div
+            class="col-md-3 col-sm-6 mb-4 member-item"
+            data-name="{{ strtolower($m->name) }}"
+            data-email="{{ strtolower($m->email) }}"
+            data-phone="{{ strtolower($m->phone) }}"
+            data-bihar="{{ strtolower($m->bihar_location) }}"
+            data-uk="{{ strtolower($m->uk_location) }}"
+        >
+            <div class="member-card text-center">
+
+                @if($hasImage)
+                    <img src="{{ asset('members/' . $m->image) }}" class="member-img mb-3" alt="{{ $m->name }}">
+                @else
+                    <div class="auto-avatar mb-3">{{ $initials }}</div>
+                @endif
+
+                <h5>{{ $m->name }}</h5>
+                <p class="text-muted small mb-0">
+                    Bihar: {{ $m->bihar_location ?? '-' }}<br>
+                    UK: {{ $m->uk_location ?? '-' }}
+                </p>
+
             </div>
         </div>
 
-      
-        
-        <div class="row">
-            @foreach($members as $m)
+        @endforeach
+    </div>
 
-            @php
-                $initials = '';
-                $parts = explode(' ', $m->name);
-                if (count($parts) >= 2) {
-                    $initials = strtoupper(substr($parts[0], 0, 1) . substr(end($parts), 0, 1));
-                } else {
-                    $initials = strtoupper(substr($m->name, 0, 1));
-                }
-                $imagePath = public_path('members/' . $m->image);
-                $hasImage  = $m->image && File::exists($imagePath);
-            @endphp
-
-            <div
-                class="col-md-3 col-sm-6 mb-4 member-item"
-                data-name="{{ strtolower($m->name) }}"
-                data-email="{{ strtolower($m->email) }}"
-                data-phone="{{ strtolower($m->phone) }}"
-                data-bihar="{{ strtolower($m->bihar_location) }}"
-                data-uk="{{ strtolower($m->uk_location) }}"
-            >
-                <div class="member-card text-center">
-
-                    @if($hasImage)
-                        <img src="{{ asset('members/' . $m->image) }}" class="member-img mb-3" alt="{{ $m->name }}">
-                    @else
-                        <div class="auto-avatar mb-3">{{ $initials }}</div>
-                    @endif
-
-                    <h5>{{ $m->name }}</h5>
-                    <p class="text-muted small mb-0">
-                        Bihar: {{ $m->bihar_location ?? '-' }}<br>
-                        UK: {{ $m->uk_location ?? '-' }}
-                    </p>
-
-                </div>
-            </div>
-
-            @endforeach
-        </div>
-    @endif
 </div><!-- /.container -->
 
 
@@ -415,7 +348,6 @@
 <div id="loader" class="show">
     <div class="loader"></div>
 </div>
-
 
 @include('layouts.footer')
 
@@ -431,13 +363,15 @@
     /* ──────────────────────────────────
        Helpers
     ────────────────────────────────── */
-    function getEl(id)  { return document.getElementById(id); }
+    function getEl(id) { return document.getElementById(id); }
+
     function setHint(hintId, msg, type) {
         var el = getEl(hintId);
         if (!el) return;
-        el.textContent  = msg;
-        el.className    = 'field-hint' + (type ? ' ' + type : '');
+        el.textContent = msg;
+        el.className   = 'field-hint' + (type ? ' ' + type : '');
     }
+
     function setFieldState(fieldId, valid) {
         var el = getEl(fieldId);
         if (!el) return;
@@ -445,6 +379,7 @@
         if (valid === true)  el.classList.add('is-valid-custom');
         if (valid === false) el.classList.add('is-invalid-custom');
     }
+
     function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
     function isValidPhone(v) { return /^[\d\s\+\-\(\)]{7,}$/.test(v.trim()); }
 
@@ -459,10 +394,9 @@
         var name = getEl('previewName');
 
         if (file) {
-            var url   = URL.createObjectURL(file);
-            img.src   = url;
-            img.style.display = 'block';
-            name.textContent  = file.name;
+            img.src            = URL.createObjectURL(file);
+            img.style.display  = 'block';
+            name.textContent   = file.name;
             wrap.style.display = 'flex';
         } else {
             img.style.display  = 'none';
@@ -479,7 +413,6 @@
         var cpw = getEl('confirm_password').value;
         var ok  = true;
 
-        /* Length check */
         if (pw.length > 0 && pw.length < 8) {
             setFieldState('password', false);
             setHint('password-hint', 'Must be at least 8 characters.', 'err');
@@ -489,7 +422,6 @@
             setHint('password-hint', '');
         }
 
-        /* Match check */
         if (cpw.length > 0) {
             if (pw !== cpw) {
                 setFieldState('confirm_password', false);
@@ -512,12 +444,17 @@
 
 
     /* ──────────────────────────────────
-       Inline blur validation
+       Blur validation
+       ✅ bihar_location & uk_location now have ids, getEl() works
+       ✅ if (!el) return guard prevents null crash
     ────────────────────────────────── */
-    var requiredFields = ['name', 'email', 'phone', 'postcode' , 'bihar_location', 'uk_location'];
+    var requiredFields = ['name', 'email', 'phone', 'postcode', 'bihar_location', 'uk_location'];
 
     requiredFields.forEach(function (id) {
-        getEl(id).addEventListener('blur', function () {
+        var el = getEl(id);
+        if (!el) return; /* safety guard */
+
+        el.addEventListener('blur', function () {
             var v = this.value.trim();
 
             if (!v) {
@@ -540,17 +477,17 @@
                 setHint(id + '-hint', 'Enter a valid postcode.', 'err');
                 return;
             }
-
-            if(id === 'bihar_location' && v.length < 2) {
+            if (id === 'bihar_location' && v.length < 2) {
                 setFieldState(id, false);
                 setHint(id + '-hint', 'Enter a valid Bihar location.', 'err');
                 return;
             }
-            if(id === 'uk_location' && v.length < 2) {
+            if (id === 'uk_location' && v.length < 2) {
                 setFieldState(id, false);
                 setHint(id + '-hint', 'Enter a valid UK location.', 'err');
                 return;
             }
+
             setFieldState(id, true);
             setHint(id + '-hint', '');
         });
@@ -563,9 +500,11 @@
     getEl('memberForm').addEventListener('submit', function (e) {
         var valid = true;
 
-        /* Check required text fields */
         requiredFields.forEach(function (id) {
-            var v = getEl(id).value.trim();
+            var el = getEl(id);
+            if (!el) return;
+            var v = el.value.trim();
+
             if (!v) {
                 setFieldState(id, false);
                 setHint(id + '-hint', 'This field is required.', 'err');
@@ -581,7 +520,6 @@
             }
         });
 
-        /* Check password fields */
         var pw  = getEl('password').value;
         var cpw = getEl('confirm_password').value;
 
@@ -606,9 +544,7 @@
         }
 
         if (!valid) {
-            e.preventDefault();   /* Stop Laravel form submission */
-
-            /* Scroll to first error */
+            e.preventDefault();
             var firstErr = document.querySelector('.is-invalid-custom');
             if (firstErr) {
                 firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -620,21 +556,25 @@
 
     /* ──────────────────────────────────
        Member Search
+       ✅ null-guarded — no crash if element absent
     ────────────────────────────────── */
-    getEl('memberSearch').addEventListener('keyup', function () {
-        var value   = this.value.toLowerCase();
-        var members = document.querySelectorAll('.member-item');
+    var searchEl = getEl('memberSearch');
+    if (searchEl) {
+        searchEl.addEventListener('keyup', function () {
+            var value   = this.value.toLowerCase();
+            var members = document.querySelectorAll('.member-item');
 
-        members.forEach(function (member) {
-            var match =
-                member.dataset.name.includes(value)  ||
-                member.dataset.email.includes(value) ||
-                member.dataset.phone.includes(value) ||
-                member.dataset.bihar.includes(value) ||
-                member.dataset.uk.includes(value);
+            members.forEach(function (member) {
+                var match =
+                    member.dataset.name.includes(value)  ||
+                    member.dataset.email.includes(value) ||
+                    member.dataset.phone.includes(value) ||
+                    member.dataset.bihar.includes(value) ||
+                    member.dataset.uk.includes(value);
 
-            member.style.display = match ? 'block' : 'none';
+                member.style.display = match ? 'block' : 'none';
+            });
         });
-    });
+    }
 
 </script>

@@ -38,7 +38,7 @@ class MemberController extends Controller
                 });
 
         session()->flash('success', 'Registration complete. Please wait for an admin to activate your account!');
-        return back()->with('success','Member Added Successfully!');
+        return back()->with('success','Registration complete. Please wait for an admin to activate your account!');
     }
 
     public function member_login(Request $request) {
