@@ -192,7 +192,7 @@
 
 <div class="contact-card">
 
-<h2 class="text-center mb-4">Contact Us</h2>
+<h2 class="text-center mb-4">Contact</h2>
 
 @if(session('success'))
 <div class="alert alert-success">
