@@ -514,7 +514,7 @@
     /* ──────────────────────────────────
        Inline blur validation
     ────────────────────────────────── */
-    var requiredFields = ['name', 'email', 'phone', 'postcode'];
+    var requiredFields = ['name', 'email', 'phone', 'postcode' , 'bihar_location', 'uk_location'];
 
     requiredFields.forEach(function (id) {
         getEl(id).addEventListener('blur', function () {
@@ -535,7 +535,22 @@
                 setHint(id + '-hint', 'Enter a valid phone number.', 'err');
                 return;
             }
+            if (id === 'postcode' && v.length < 5) {
+                setFieldState(id, false);
+                setHint(id + '-hint', 'Enter a valid postcode.', 'err');
+                return;
+            }
 
+            if(id === 'bihar_location' && v.length < 2) {
+                setFieldState(id, false);
+                setHint(id + '-hint', 'Enter a valid Bihar location.', 'err');
+                return;
+            }
+            if(id === 'uk_location' && v.length < 2) {
+                setFieldState(id, false);
+                setHint(id + '-hint', 'Enter a valid UK location.', 'err');
+                return;
+            }
             setFieldState(id, true);
             setHint(id + '-hint', '');
         });
