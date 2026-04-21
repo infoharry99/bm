@@ -288,7 +288,7 @@
     ══════════════════════════════════ -->
     @php use Illuminate\Support\Facades\File; @endphp
 
-    @if(session->has('member_id'))
+   @if(session()->has('member_id'))
         
     <div class="row mb-4">
         <div class="col-md-6 mx-auto">
