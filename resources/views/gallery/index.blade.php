@@ -156,28 +156,7 @@
 
     <body>
 
-    <!-- <div class ="section"> -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <!-- <div class="container"> -->
-                <!-- <a class="navbar-brand" href="/">Bihari Muslim Group UK</a> -->
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#mainMenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="mainMenu">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="/member" class="nav-link">Members</a></li>
-                        <li class="nav-item"><a href="/work-events" class="nav-link">Events</a></li>
-                        <li class="nav-item"><a href="/gallerry" class="nav-link">Gallery</a></li>
-                        <li class="nav-item"><a href="/bihar-news" class="nav-link">Bihar News</a></li>
-                    </ul>
-                </div>
-            <!-- </div> -->
-        </nav>
-    <!-- </div> -->
+   @include('layouts.navbar')
 
 <div class="container mt-4">
     <h2>Photo Gallery</h2>
