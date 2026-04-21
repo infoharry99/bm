@@ -18,7 +18,7 @@
             <!-- Helpful Links -->
             <div class="col-md-4">
                 <div class="footer-link">
-					<h2>Contact </h2>
+					<h2>Links </h2>
                     <a href="/contact">Contact Us</a>
 					 <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
                     <a href="#" data-toggle="modal" data-target="#cookiesModal">Cookies</a>
