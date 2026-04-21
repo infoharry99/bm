@@ -2,7 +2,7 @@
           <!-- Footer Start -->
         <div class="footer">
             <div class="row">
-				<div class="col-md-3">
+				<div class="col-md-2">
 					
 				</div>
                 <div class="col-md-2">
