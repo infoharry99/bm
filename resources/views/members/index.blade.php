@@ -288,6 +288,8 @@
     ══════════════════════════════════ -->
     @php use Illuminate\Support\Facades\File; @endphp
 
+    @if(session->has('member_id'))
+        
     <div class="row mb-4">
         <div class="col-md-6 mx-auto">
             <input type="text" id="memberSearch" class="form-control"
@@ -338,6 +340,8 @@
         @endforeach
     </div>
 
+    @endif
+
 </div><!-- /.container -->
 
 
@@ -349,7 +353,7 @@
     <div class="loader"></div>
 </div>
 
-@include('layouts.footer')
+
 
 
 <!-- ══════════════════════════════════
@@ -578,3 +582,5 @@
     }
 
 </script>
+
+@include('layouts.footer')
