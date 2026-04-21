@@ -75,15 +75,7 @@
 
             h2 { margin-top: 0; }
 
-            .row {
-                display: flex;
-                gap: 40px;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-
-            .row.reverse { flex-direction: row-reverse; }
-
+           
             .text, .image {
                 flex: 1;
                 min-width: 300px;
@@ -97,7 +89,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #555;
+                color: #fffdfd;
                 font-size: 18px;
                 border-radius: 10px;
             }
