@@ -46,9 +46,9 @@
             <td class="p-3 font-medium">{{ $m->name }}</td>
             <td class="p-3">{{ $m->email }}</td>
             <td class="p-3">{{ $m->phone }}</td>
-            <td class="p-3">{{ $m->bihar_location }}</td>
+            <td class="p-3">{{ $m->location }}</td>
             <td class="p-3">{{ $m->uk_location }}</td>
-            <td class="p-3">{{ $m->postcode }}</td>
+            <td class="p-3">{{ $m->Postcode }}</td>
 
             <!-- STATUS -->
             <td class="p-3">
