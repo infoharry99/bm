@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Admin Login</title>
+    <title>Member Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -24,6 +24,9 @@
                 <input name="password" type="password" class="mt-1 w-full p-2 border rounded" required>
             </div>
             <button class="w-full bg-blue-600 text-white p-2 rounded">Login</button>
+            <div class="mt-2">
+                <a href="/forgot-password">Forgot Password?</a>
+            </div>
         </form>
     </div>
 </body>

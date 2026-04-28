@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/member',[MemberController::class,'index'])->name('member.index');
 Route::post('/member',[MemberController::class,'store'])->name('member.store');
@@ -60,6 +61,17 @@ Route::get('/contact-us', [ContactController::class,'index'])->name('contact');
 Route::post('/contact-submit', [ContactController::class,'store'])->name('contact.store');
 
 Route::view('/', 'home');
+
+
+Route::get('/forgot-password', [AuthController::class, 'forgotPasswordForm']);
+Route::post('/forgot-password', [AuthController::class, 'sendResetLink']);
+
+Route::get('/reset-password/{token}', [AuthController::class, 'resetForm']);
+Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+
+
+Route::get('/profile', [MemberController::class, 'profile']);
+Route::post('/profile-update', [MemberController::class, 'updateProfile']);
 
 
 Route::view('/login', 'auth.login')->name('login');

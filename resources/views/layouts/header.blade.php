@@ -11,10 +11,7 @@
 								<div class="logo">
 									<a href="{{ url('/') }}"><img src="{{ asset('img/l1.png') }}" alt="#"></a>
 								</div>
-								<!-- End Logo -->
-								<!-- Mobile Nav -->
 								<div class="mobile-nav"></div>
-								<!-- End Mobile Nav -->
 							</div>
 							<div class="col-lg-7 col-md-9 col-12">
 								<!-- Main Menu -->

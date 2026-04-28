@@ -41,6 +41,30 @@ class MemberController extends Controller
         return back()->with('success','Registration complete. Please wait for an admin to activate your account!');
     }
 
+    public function profile()
+    {
+        $user = Member::find(session()->get('member_id'));
+        return view('members.profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Member::find(session()->get('member_id'));
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+
+        // Password optional
+        if ($request->password) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+
+        return back()->with('success', 'Profile updated');
+    }
+
     public function member_login(Request $request) {
         $request->validate([
             'email' => 'required|email',
