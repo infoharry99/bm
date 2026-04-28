@@ -178,6 +178,8 @@
     <!-- ══════════════════════════════════
          ADD MEMBER FORM
     ══════════════════════════════════ -->
+
+   @if(empty(session()->has('member_id')))
     <div class="form-card mb-5">
 
         <h4>New Member</h4>
@@ -229,7 +231,7 @@
                 <!-- Bihar Location  ✅ id attribute added -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Bihar Location <span class="req">*</span></label>
-                    <input type="text" name="bihar_location" id="bihar_location"
+                    <input type="text" name="location" id="bihar_location"
                         class="form-control" placeholder="District / village" required>
                     <div class="field-hint" id="bihar_location-hint"></div>
                 </div>
@@ -253,7 +255,7 @@
                 <!-- Postcode -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Postcode <span class="req">*</span></label>
-                    <input type="text" name="postcode" id="postcode"
+                    <input type="text" name="Postcode" id="postcode"
                         class="form-control" placeholder="SW1A 1AA" required>
                     <div class="field-hint" id="postcode-hint"></div>
                 </div>
@@ -280,7 +282,9 @@
             </div><!-- /.row -->
 
         </form>
-    </div><!-- /.form-card -->
+    </div>
+    <!-- /.form-card -->
+     @endif
 
 
     <!-- ══════════════════════════════════

@@ -245,8 +245,8 @@
                             <!-- Bihar Location -->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Bihar Location</label>
-                                <input type="text" name="bihar_location" class="form-control"
-                                    value="{{ $user->bihar_location }}">
+                                <input type="text" name="location" class="form-control"
+                                    value="{{ $user->location }}">
                             </div>
 
                             <!-- UK Location -->
@@ -267,7 +267,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Postcode</label>
                                 <input type="text" name="postcode" class="form-control"
-                                    value="{{ $user->postcode }}">
+                                    value="{{ $user->Postcode }}">
                             </div>
 
                             <!-- Profile Image -->
