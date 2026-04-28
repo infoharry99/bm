@@ -74,6 +74,7 @@ class AuthController extends Controller
         }
 
         $user = Member::where('email', $checkToken->email)->update([
+                    'status' => 0,
                     'password' => $request->password
                 ]);
         return redirect('/login')->with('success', 'Password reset successfully!');
