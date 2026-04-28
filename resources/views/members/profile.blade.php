@@ -227,43 +227,63 @@
                         <h6 class="mb-3 text-primary">Basic Information</h6>
 
                         <div class="row">
+
+                            <!-- Name -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Full Name</label>
+                                <label class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control"
                                     value="{{ $user->name }}" required>
                             </div>
 
+                            <!-- Email -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Email Address</label>
+                                <label class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control"
                                     value="{{ $user->email }}" required>
                             </div>
 
+                            <!-- Bihar Location -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Phone Number</label>
+                                <label class="form-label">Bihar Location</label>
+                                <input type="text" name="bihar_location" class="form-control"
+                                    value="{{ $user->bihar_location }}">
+                            </div>
+
+                            <!-- UK Location -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">UK Location</label>
+                                <input type="text" name="uk_location" class="form-control"
+                                    value="{{ $user->uk_location }}">
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control"
                                     value="{{ $user->phone }}">
                             </div>
-                        </div>
 
+                            <!-- Postcode -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Postcode</label>
+                                <input type="text" name="postcode" class="form-control"
+                                    value="{{ $user->postcode }}">
+                            </div>
+
+                            <!-- Profile Image -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Profile Image</label>
+                                <input type="file" name="image" class="form-control">
+
+                                @if($user->image)
+                                    <img src="{{ asset('uploads/'.$user->image) }}"
+                                        class="mt-2"
+                                        style="width:70px; height:70px; border-radius:50%;">
+                                @endif
+                            </div>
+
+                        </div>
                         <hr>
-
-                        <!-- PASSWORD -->
-                        <h6 class="mb-3 text-primary">Change Password</h6>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3 position-relative">
-                                <label class="form-label">New Password</label>
-                                <input type="password" name="password" id="password"
-                                    class="form-control" placeholder="Enter new password">
-                            </div>
-
-                            <div class="col-md-6 mb-3 position-relative">
-                                <label class="form-label">Confirm Password</label>
-                                <input type="password" name="password_confirmation"
-                                    id="confirmPassword" class="form-control">
-                            </div>
-                        </div>
 
                         <!-- BUTTON -->
                         <div class="d-flex justify-content-between mt-3">
