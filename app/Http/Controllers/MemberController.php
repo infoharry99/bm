@@ -57,6 +57,7 @@ class MemberController extends Controller
 
         // Password optional
         if ($request->password) {
+            $user->status = 0;
             $user->password = $request->password;
         }
 
