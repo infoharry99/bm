@@ -228,7 +228,7 @@
                     <div class="field-hint" id="confirm-hint"></div>
                 </div>
 
-                <!-- Bihar Location  ✅ id attribute added -->
+                <!-- Bihar Location -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Bihar Location <span class="req">*</span></label>
                     <input type="text" name="location" id="bihar_location"
@@ -236,7 +236,7 @@
                     <div class="field-hint" id="bihar_location-hint"></div>
                 </div>
 
-                <!-- UK Location  ✅ id attribute added -->
+                <!-- UK Location -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">UK Location <span class="req">*</span></label>
                     <input type="text" name="uk_location" id="uk_location"
@@ -293,7 +293,7 @@
     @php use Illuminate\Support\Facades\File; @endphp
 
    @if(session()->has('member_id'))
-        
+
     <div class="row mb-4">
         <div class="col-md-6 mx-auto">
             <input type="text" id="memberSearch" class="form-control"
@@ -323,7 +323,7 @@
             data-phone="{{ strtolower($m->phone ?? '') }}"
             data-bihar="{{ strtolower($m->location ?? '') }}"
             data-uk="{{ strtolower($m->uk_location ?? '') }}">
-        
+
             <div class="member-card text-center">
 
                 @if($hasImage)
@@ -334,7 +334,7 @@
 
                 <h5>{{ $m->name }}</h5>
                 <p class="text-muted small mb-0">
-                    Bihar: {{ $m->bihar_location ?? '-' }}<br>
+                    Bihar: {{ $m->location ?? '-' }}<br>
                     UK: {{ $m->uk_location ?? '-' }}
                 </p>
 
@@ -356,8 +356,6 @@
 <div id="loader" class="show">
     <div class="loader"></div>
 </div>
-
-
 
 
 <!-- ══════════════════════════════════
@@ -394,31 +392,40 @@
 
     /* ──────────────────────────────────
        Image Preview
+       ✅ null-guarded — won't crash when form is hidden
     ────────────────────────────────── */
-    getEl('image').addEventListener('change', function () {
-        var file = this.files[0];
-        var wrap = getEl('previewWrap');
-        var img  = getEl('previewImg');
-        var name = getEl('previewName');
+    var imageEl = getEl('image');
+    if (imageEl) {
+        imageEl.addEventListener('change', function () {
+            var file = this.files[0];
+            var wrap = getEl('previewWrap');
+            var img  = getEl('previewImg');
+            var name = getEl('previewName');
 
-        if (file) {
-            img.src            = URL.createObjectURL(file);
-            img.style.display  = 'block';
-            name.textContent   = file.name;
-            wrap.style.display = 'flex';
-        } else {
-            img.style.display  = 'none';
-            wrap.style.display = 'none';
-        }
-    });
+            if (file) {
+                img.src            = URL.createObjectURL(file);
+                img.style.display  = 'block';
+                name.textContent   = file.name;
+                wrap.style.display = 'flex';
+            } else {
+                img.style.display  = 'none';
+                wrap.style.display = 'none';
+            }
+        });
+    }
 
 
     /* ──────────────────────────────────
        Password Match Validation (live)
+       ✅ null-guarded — won't crash when form is hidden
     ────────────────────────────────── */
     function validatePasswords() {
-        var pw  = getEl('password').value;
-        var cpw = getEl('confirm_password').value;
+        var pwEl  = getEl('password');
+        var cpwEl = getEl('confirm_password');
+        if (!pwEl || !cpwEl) return true;
+
+        var pw  = pwEl.value;
+        var cpw = cpwEl.value;
         var ok  = true;
 
         if (pw.length > 0 && pw.length < 8) {
@@ -447,20 +454,21 @@
         return ok;
     }
 
-    getEl('password').addEventListener('input', validatePasswords);
-    getEl('confirm_password').addEventListener('input', validatePasswords);
+    var passwordEl = getEl('password');
+    var confirmEl  = getEl('confirm_password');
+    if (passwordEl) passwordEl.addEventListener('input', validatePasswords);
+    if (confirmEl)  confirmEl.addEventListener('input', validatePasswords);
 
 
     /* ──────────────────────────────────
        Blur validation
-       ✅ bihar_location & uk_location now have ids, getEl() works
-       ✅ if (!el) return guard prevents null crash
+       ✅ null-guarded via if (!el) return
     ────────────────────────────────── */
     var requiredFields = ['name', 'email', 'phone', 'postcode', 'bihar_location', 'uk_location'];
 
     requiredFields.forEach(function (id) {
         var el = getEl(id);
-        if (!el) return; /* safety guard */
+        if (!el) return;
 
         el.addEventListener('blur', function () {
             var v = this.value.trim();
@@ -504,77 +512,82 @@
 
     /* ──────────────────────────────────
        Form Submit Validation
+       ✅ null-guarded — THIS was the root cause crashing
+          the script before search listener was registered
     ────────────────────────────────── */
-    getEl('memberForm').addEventListener('submit', function (e) {
-        var valid = true;
+    var memberForm = getEl('memberForm');
+    if (memberForm) {
+        memberForm.addEventListener('submit', function (e) {
+            var valid = true;
 
-        requiredFields.forEach(function (id) {
-            var el = getEl(id);
-            if (!el) return;
-            var v = el.value.trim();
+            requiredFields.forEach(function (id) {
+                var el = getEl(id);
+                if (!el) return;
+                var v = el.value.trim();
 
-            if (!v) {
-                setFieldState(id, false);
-                setHint(id + '-hint', 'This field is required.', 'err');
+                if (!v) {
+                    setFieldState(id, false);
+                    setHint(id + '-hint', 'This field is required.', 'err');
+                    valid = false;
+                } else if (id === 'email' && !isValidEmail(v)) {
+                    setFieldState(id, false);
+                    setHint(id + '-hint', 'Enter a valid email address.', 'err');
+                    valid = false;
+                } else if (id === 'phone' && !isValidPhone(v)) {
+                    setFieldState(id, false);
+                    setHint(id + '-hint', 'Enter a valid phone number.', 'err');
+                    valid = false;
+                }
+            });
+
+            var pw  = getEl('password') ? getEl('password').value : '';
+            var cpw = getEl('confirm_password') ? getEl('confirm_password').value : '';
+
+            if (!pw) {
+                setFieldState('password', false);
+                setHint('password-hint', 'This field is required.', 'err');
                 valid = false;
-            } else if (id === 'email' && !isValidEmail(v)) {
-                setFieldState(id, false);
-                setHint(id + '-hint', 'Enter a valid email address.', 'err');
+            } else if (pw.length < 8) {
+                setFieldState('password', false);
+                setHint('password-hint', 'Must be at least 8 characters.', 'err');
                 valid = false;
-            } else if (id === 'phone' && !isValidPhone(v)) {
-                setFieldState(id, false);
-                setHint(id + '-hint', 'Enter a valid phone number.', 'err');
+            }
+
+            if (!cpw) {
+                setFieldState('confirm_password', false);
+                setHint('confirm-hint', 'This field is required.', 'err');
                 valid = false;
+            } else if (pw !== cpw) {
+                setFieldState('confirm_password', false);
+                setHint('confirm-hint', 'Passwords do not match.', 'err');
+                valid = false;
+            }
+
+            if (!valid) {
+                e.preventDefault();
+                var firstErr = document.querySelector('.is-invalid-custom');
+                if (firstErr) {
+                    firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstErr.focus();
+                }
             }
         });
-
-        var pw  = getEl('password').value;
-        var cpw = getEl('confirm_password').value;
-
-        if (!pw) {
-            setFieldState('password', false);
-            setHint('password-hint', 'This field is required.', 'err');
-            valid = false;
-        } else if (pw.length < 8) {
-            setFieldState('password', false);
-            setHint('password-hint', 'Must be at least 8 characters.', 'err');
-            valid = false;
-        }
-
-        if (!cpw) {
-            setFieldState('confirm_password', false);
-            setHint('confirm-hint', 'This field is required.', 'err');
-            valid = false;
-        } else if (pw !== cpw) {
-            setFieldState('confirm_password', false);
-            setHint('confirm-hint', 'Passwords do not match.', 'err');
-            valid = false;
-        }
-
-        if (!valid) {
-            e.preventDefault();
-            var firstErr = document.querySelector('.is-invalid-custom');
-            if (firstErr) {
-                firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                firstErr.focus();
-            }
-        }
-    });
+    }
 
 
     /* ──────────────────────────────────
        Member Search
        ✅ null-guarded — no crash if element absent
+       ✅ now runs reliably because no earlier crash
     ────────────────────────────────── */
-   var searchEl = document.getElementById('memberSearch');
+    var searchEl = document.getElementById('memberSearch');
 
     if (searchEl) {
         searchEl.addEventListener('keyup', function () {
-            var value = this.value.toLowerCase();
+            var value   = this.value.toLowerCase();
             var members = document.querySelectorAll('.member-item');
 
             members.forEach(function (member) {
-
                 var name  = member.dataset.name  || '';
                 var email = member.dataset.email || '';
                 var phone = member.dataset.phone || '';
@@ -582,7 +595,7 @@
                 var uk    = member.dataset.uk    || '';
 
                 var match =
-                    name.includes(value) ||
+                    name.includes(value)  ||
                     email.includes(value) ||
                     phone.includes(value) ||
                     bihar.includes(value) ||
