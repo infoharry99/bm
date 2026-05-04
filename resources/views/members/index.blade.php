@@ -318,12 +318,12 @@
 
         <div
             class="col-md-3 col-sm-6 mb-4 member-item"
-            data-name="{{ strtolower($m->name) }}"
-            data-email="{{ strtolower($m->email) }}"
-            data-phone="{{ strtolower($m->phone) }}"
-            data-bihar="{{ strtolower($m->bihar_location) }}"
-            data-uk="{{ strtolower($m->uk_location) }}"
-        >
+            data-name="{{ strtolower($m->name ?? '') }}"
+            data-email="{{ strtolower($m->email ?? '') }}"
+            data-phone="{{ strtolower($m->phone ?? '') }}"
+            data-bihar="{{ strtolower($m->location ?? '') }}"
+            data-uk="{{ strtolower($m->uk_location ?? '') }}">
+        
             <div class="member-card text-center">
 
                 @if($hasImage)
@@ -566,21 +566,29 @@
        Member Search
        ✅ null-guarded — no crash if element absent
     ────────────────────────────────── */
-    var searchEl = getEl('memberSearch');
+   var searchEl = document.getElementById('memberSearch');
+
     if (searchEl) {
         searchEl.addEventListener('keyup', function () {
-            var value   = this.value.toLowerCase();
+            var value = this.value.toLowerCase();
             var members = document.querySelectorAll('.member-item');
 
             members.forEach(function (member) {
-                var match =
-                    member.dataset.name.includes(value)  ||
-                    member.dataset.email.includes(value) ||
-                    member.dataset.phone.includes(value) ||
-                    member.dataset.bihar.includes(value) ||
-                    member.dataset.uk.includes(value);
 
-                member.style.display = match ? 'block' : 'none';
+                var name  = member.dataset.name  || '';
+                var email = member.dataset.email || '';
+                var phone = member.dataset.phone || '';
+                var bihar = member.dataset.bihar || '';
+                var uk    = member.dataset.uk    || '';
+
+                var match =
+                    name.includes(value) ||
+                    email.includes(value) ||
+                    phone.includes(value) ||
+                    bihar.includes(value) ||
+                    uk.includes(value);
+
+                member.style.display = match ? '' : 'none';
             });
         });
     }
