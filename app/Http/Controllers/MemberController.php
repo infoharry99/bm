@@ -8,6 +8,49 @@ use Illuminate\Support\Facades\Mail;
 
 class MemberController extends Controller
 {
+
+    public function messageForm($id)
+    {
+        if (!session()->has('member_id')) {
+            return redirect('/login');
+        }
+
+        $member = Member::findOrFail($id);
+
+        return view('members.message', compact('member'));
+    }
+
+
+    public function sendMessage(Request $request, $id)
+    {
+        if (!session()->has('member_id')) {
+            return redirect('/login');
+        }
+
+        $request->validate([
+            'message' => 'required'
+        ]);
+
+        $receiver = Member::findOrFail($id);
+
+        $sender = Member::find(session()->get('member_id'));
+
+        Mail::raw(
+            "Message From: {$sender->name}\n".
+            "Email: {$sender->email}\n\n".
+            "Message:\n".$request->message,
+
+            function ($mail) use ($receiver, $sender) {
+
+                $mail->to($receiver->email)
+                    ->subject('New Message From '.$sender->name);
+            }
+        );
+
+        return redirect('/member')
+            ->with('success', 'Message sent successfully!');
+    }
+
     public function index() {
         $members = Member::latest()->get();
         return view('members.index', compact('members'));

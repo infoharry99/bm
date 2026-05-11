@@ -307,11 +307,13 @@
         @php
             $initials = '';
             $parts    = explode(' ', $m->name);
+
             if (count($parts) >= 2) {
                 $initials = strtoupper(substr($parts[0], 0, 1) . substr(end($parts), 0, 1));
             } else {
                 $initials = strtoupper(substr($m->name, 0, 1));
             }
+
             $imagePath = public_path('members/' . $m->image);
             $hasImage  = $m->image && File::exists($imagePath);
         @endphp
@@ -327,16 +329,27 @@
             <div class="member-card text-center">
 
                 @if($hasImage)
-                    <img src="{{ asset('members/' . $m->image) }}" class="member-img mb-3" alt="{{ $m->name }}">
+                    <img src="{{ asset('members/' . $m->image) }}"
+                        class="member-img mb-3"
+                        alt="{{ $m->name }}">
                 @else
-                    <div class="auto-avatar mb-3">{{ $initials }}</div>
+                    <div class="auto-avatar mb-3">
+                        {{ $initials }}
+                    </div>
                 @endif
 
                 <h5>{{ $m->name }}</h5>
-                <p class="text-muted small mb-0">
+
+                <p class="text-muted small mb-2">
                     Bihar: {{ $m->location ?? '-' }}<br>
                     UK: {{ $m->uk_location ?? '-' }}
                 </p>
+
+                <!-- MESSAGE BUTTON -->
+                <a href="{{ route('member.message', $m->id) }}"
+                class="btn btn-primary btn-sm mt-2">
+                    <i class="fa fa-envelope"></i> Message
+                </a>
 
             </div>
         </div>

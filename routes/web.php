@@ -15,6 +15,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
 
+
+Route::get('/member/message/{id}', [MemberController::class, 'messageForm'])
+    ->name('member.message');
+
+Route::post('/member/send-message/{id}', [MemberController::class, 'sendMessage'])
+    ->name('member.sendMessage');
+    
 Route::get('/member',[MemberController::class,'index'])->name('member.index');
 Route::post('/member',[MemberController::class,'store'])->name('member.store');
 Route::view('/coming-soon', 'coming-soon');
