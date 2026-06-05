@@ -209,6 +209,9 @@
                     <input type="email" name="email" id="email"
                         class="form-control" placeholder="you@example.com" required>
                     <div class="field-hint" id="email-hint"></div>
+                    @error('email')
+                    <div class="field-hint err">{{ $message }}</div>
+                     @enderror
                 </div>
 
                 <!-- Password -->
@@ -250,6 +253,9 @@
                     <input type="text" name="phone" id="phone"
                         class="form-control" placeholder="+44 7700 000000" required>
                     <div class="field-hint" id="phone-hint"></div>
+                    @error('phone')
+                    <div class="field-hint err">{{ $message }}</div>
+                     @enderror
                 </div>
 
                 <!-- Postcode -->
