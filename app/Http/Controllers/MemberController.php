@@ -57,9 +57,14 @@ class MemberController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
-            'name' => 'required',
-            'image' => 'image|mimes:jpg,png,jpeg,webp|max:2048'
+       $request->validate([
+            'name'                  => 'required|string|max:255',
+            'email'                 => 'required|email|unique:members,email',
+            'phone'                 => 'required|unique:members,phone',
+        ], [
+            'email.unique'          => 'This email address is already registered.',
+            'phone.unique'          => 'This phone number is already registered.',
+            'consent.accepted'      => 'You must provide consent before registering.',
         ]);
 
         $data = $request->all();

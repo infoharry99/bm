@@ -271,6 +271,19 @@
                     </div>
                     <div class="field-hint">JPG, PNG or WebP. Optional.</div>
                 </div>
+                <!-- Consent Checkbox -->
+                <div class="col-12 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                            name="consent" id="consent" value="1" required>
+
+                        <label class="form-check-label" for="consent">
+                            By ticking the box, you thereby give consent to show your
+                            photos, name and location to other registered members of this website.
+                        </label>
+                    </div>
+                    <div class="field-hint text-danger" id="consent-hint"></div>
+                </div>
 
                 <!-- Submit -->
                 <div class="col-md-6 mb-3" style="margin-top: 16px;">

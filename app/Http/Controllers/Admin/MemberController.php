@@ -12,7 +12,7 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = Member::latest()->paginate(20);
+        $members = Member::latest()->get();
         return view('admin.members.index', compact('members'));
     }
 
@@ -37,8 +37,8 @@ class MemberController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'email'    => 'nullable|email',
-            'phone'    => 'nullable|string',
+            'email'    => 'nullable|email|unique:members,email',
+            'phone'    => 'nullable|string|unique:members,phone',
             'location' => 'nullable|string',
             'image'    => 'nullable|image|max:4096'
         ]);
@@ -67,8 +67,8 @@ class MemberController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'email'    => 'nullable|email',
-            'phone'    => 'nullable|string',
+            'email'    => 'nullable|email|unique:members,email,'.$member->id,
+            'phone'    => 'nullable|string|unique:members,phone,'.$member->id,
             'location' => 'nullable|string',
             'image'    => 'nullable|image|max:4096'
         ]);

@@ -3,6 +3,10 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+
 <div class="flex justify-between mb-4">
     <h2 class="text-xl font-semibold">Members</h2>
     <a href="{{ route('admin.members.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">
@@ -12,7 +16,7 @@
 
 <div class="bg-white shadow rounded p-4 overflow-x-auto">
 
-<table class="w-full text-left text-sm border-collapse">
+<table id="membersTable" class="table table-bordered table-hover align-middle">
     <thead class="bg-gray-100 uppercase text-xs">
         <tr>
             <th class="p-3">Image</th>
@@ -103,5 +107,42 @@
 </table>
 
 </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    $('#membersTable').DataTable({
+        responsive: true,
+        pageLength: 25,
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        order: [[1, 'asc']],
+        language: {
+            search: "Search Member:",
+            lengthMenu: "Show _MENU_ entries",
+            info: "Showing _START_ to _END_ of _TOTAL_ members",
+            paginate: {
+                first: "First",
+                last: "Last",
+                next: "→",
+                previous: "←"
+            }
+        }
+    });
+
+});
+</script>
 @endsection
