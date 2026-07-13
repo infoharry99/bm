@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>Bihari Muslim UK</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
+        <meta content="Bihari Muslim" name="keywords">
+        <meta content="Bihari Muslim" name="description">
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
