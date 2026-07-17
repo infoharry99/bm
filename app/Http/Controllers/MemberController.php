@@ -122,9 +122,9 @@ class MemberController extends Controller
 
         $member = Member::where('email', $request->email)->first();
 
-        if($member && $member->status != 1) {
-            return back()->with('error', 'Your account is pending approval. Please wait for admin approval.');
-        }
+        // if($member && $member->status != 1) {
+        //     return back()->with('error', 'Your account is pending approval. Please wait for admin approval.');
+        // }
         if ($member && $member->password == $request->password) {
             // Store member info in session
             session(['member_id' => $member->id, 'member_name' => $member->name]);
