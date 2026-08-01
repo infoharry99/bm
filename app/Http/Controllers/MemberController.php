@@ -69,6 +69,10 @@ class MemberController extends Controller
 
         $data = $request->all();
 
+        if ($request->has('postcode') && !$request->has('Postcode')) {
+            $data['Postcode'] = $request->postcode;
+        }
+
         if($request->hasFile('image')){
             $img = $request->file('image');
             $imageName = time().'.'.$img->getClientOriginalExtension();
@@ -77,41 +81,92 @@ class MemberController extends Controller
         }
 
         $member = Member::create($data);
-          Mail::raw("A new member has been created.
 
-            Name: {$member->name}
-            Email: {$member->email}", function ($message) {
-                    $message->to('info@iharimuslim.co.uk')
-                            ->subject('New Member Created');
-                });
+        // Send automated registration confirmation email to member
+        try {
+            Mail::send('emails.registration_confirmation', ['member' => $member], function ($message) use ($member) {
+                $message->to($member->email)
+                        ->subject('Registration Confirmation - Bihari Muslims UK');
+            });
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Registration confirmation email error: ' . $e->getMessage());
+        }
 
-        session()->flash('success', 'Registration complete. Please wait for an admin to activate your account!');
-        return back()->with('success','Registration complete. Please wait for an admin to activate your account!');
+        // Send admin notification
+        try {
+            Mail::raw("A new member has registered.\n\nName: {$member->name}\nEmail: {$member->email}\nPhone: {$member->phone}", function ($message) {
+                $message->to('info@iharimuslim.co.uk')
+                        ->subject('New Member Registration');
+            });
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Admin registration notification error: ' . $e->getMessage());
+        }
+
+        // Auto-login member
+        session(['member_id' => $member->id, 'member_name' => $member->name]);
+
+        $msg = 'Registration completed successfully! Welcome, ' . $member->name . '. A confirmation email has been sent to ' . $member->email . '.';
+        session()->flash('success', $msg);
+        return redirect('/profile')->with('success', $msg);
     }
 
     public function profile()
     {
+        if (!session()->has('member_id')) {
+            return redirect('/login')->with('error', 'Please log in to view your profile.');
+        }
         $user = Member::find(session()->get('member_id'));
         return view('members.profile', compact('user'));
     }
 
     public function updateProfile(Request $request)
     {
-        $user = Member::find(session()->get('member_id'));
+        $memberId = session()->get('member_id');
+        if (!$memberId) {
+            return redirect('/login')->with('error', 'Please log in to update your profile.');
+        }
+
+        $user = Member::findOrFail($memberId);
+
+        $request->validate([
+            'name'  => 'required|string|max:255',
+            'email' => 'required|email|unique:members,email,' . $user->id,
+            'phone' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:4096'
+        ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        if ($request->has('location')) {
+            $user->location = $request->location;
+        }
+        if ($request->has('uk_location')) {
+            $user->uk_location = $request->uk_location;
+        }
+        if ($request->has('postcode')) {
+            $user->Postcode = $request->postcode;
+        } elseif ($request->has('Postcode')) {
+            $user->Postcode = $request->Postcode;
+        }
+
+        if ($request->hasFile('image')) {
+            $img = $request->file('image');
+            $imageName = time() . '_' . rand(100, 999) . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('members'), $imageName);
+            $user->image = $imageName;
+        }
 
         // Password optional
         if ($request->password) {
-            $user->status = 0;
             $user->password = $request->password;
         }
 
         $user->save();
 
-        return back()->with('success', 'Profile updated');
+        session(['member_name' => $user->name]);
+
+        return back()->with('success', 'Profile updated successfully!');
     }
 
     public function member_login(Request $request) {

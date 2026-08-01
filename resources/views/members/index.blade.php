@@ -261,7 +261,7 @@
                 <!-- Postcode -->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Postcode <span class="req">*</span></label>
-                    <input type="text" name="Postcode" id="postcode"
+                    <input type="text" name="postcode" id="postcode"
                         class="form-control" placeholder="SW1A 1AA" required>
                     <div class="field-hint" id="postcode-hint"></div>
                 </div>

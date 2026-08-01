@@ -196,11 +196,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-6">
             <div class="card profile-card mb-4">
+                @php
+                    use Illuminate\Support\Facades\File;
+                    $hasProfileImg = $user->image && File::exists(public_path('members/' . $user->image));
+                @endphp
+
                 <!-- Header -->
                 <div class="profile-header text-center">
-                    <div class="auto-avatar mb-2">
-                        {{ strtoupper(substr($user->name,0,1)) }}
-                    </div>
+                    @if($hasProfileImg)
+                        <img src="{{ asset('members/' . $user->image) }}"
+                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #fff;"
+                            class="mb-2 shadow-sm" alt="{{ $user->name }}">
+                    @else
+                        <div class="auto-avatar mb-2">
+                            {{ strtoupper(substr($user->name,0,1)) }}
+                        </div>
+                    @endif
                     <h5 class="mb-0">{{ $user->name }}</h5>
                     <small>{{ $user->email }}</small>
                 </div>
@@ -209,10 +220,15 @@
 
                     <!-- Alerts -->
                     @if(session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle mr-1"></i> {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     @endif
 
-                    @if ($errors->any())
+                    @if(isset($errors) && $errors->any())
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $error)
                                 <div>{{ $error }}</div>
@@ -220,7 +236,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="/profile-update">
+                    <form method="POST" action="/profile-update" enctype="multipart/form-data">
                         @csrf
 
                         <!-- BASIC INFO -->
@@ -273,13 +289,18 @@
                             <!-- Profile Image -->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Profile Image</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" id="profileImageInput" class="form-control" accept="image/*">
 
-                                @if($user->image)
-                                    <img src="{{ asset('uploads/'.$user->image) }}"
-                                        class="mt-2"
-                                        style="width:70px; height:70px; border-radius:50%;">
-                                @endif
+                                <div class="mt-2 d-flex align-items-center gap-3" id="previewContainer">
+                                    @if($hasProfileImg)
+                                        <img src="{{ asset('members/'.$user->image) }}"
+                                            id="profileImagePreview"
+                                            style="width:70px; height:70px; border-radius:50%; object-fit:cover; border:2px solid #dde1f0;">
+                                    @else
+                                        <img src="" id="profileImagePreview"
+                                            style="width:70px; height:70px; border-radius:50%; object-fit:cover; border:2px solid #dde1f0; display:none;">
+                                    @endif
+                                </div>
                             </div>
 
                         </div>
@@ -302,6 +323,19 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('profileImageInput').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var preview = document.getElementById('profileImagePreview');
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        }
+    });
+</script>
 
 </body>
 </html>
