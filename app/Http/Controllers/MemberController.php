@@ -95,7 +95,7 @@ class MemberController extends Controller
         // Send admin notification
         try {
             Mail::raw("A new member has registered.\n\nName: {$member->name}\nEmail: {$member->email}\nPhone: {$member->phone}", function ($message) {
-                $message->to('info@iharimuslim.co.uk')
+                $message->to('info@biharimuslim.co.uk')
                         ->subject('New Member Registration');
             });
         } catch (\Exception $e) {
