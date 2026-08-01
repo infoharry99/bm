@@ -20,15 +20,21 @@
 
     .navbar {
         top: 0 !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 30px !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    /* ── Outer Wrapper & Top Margin Centering ── */
+    .profile-outer-container {
+        margin-top: 65px !important;
+        margin-bottom: 60px !important;
     }
 
     /* ── Compact Profile Card Layout ── */
     .profile-card-compact {
         border: none;
         border-radius: 16px;
-        box-shadow: 0 8px 30px rgba(48, 70, 162, 0.08);
+        box-shadow: 0 10px 35px rgba(48, 70, 162, 0.1);
         background: #ffffff;
         overflow: hidden;
     }
@@ -37,7 +43,7 @@
     .profile-sidebar {
         background: linear-gradient(145deg, #4C6BE9 0%, #3046A2 100%);
         color: #ffffff;
-        padding: 30px 20px;
+        padding: 35px 20px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -105,7 +111,7 @@
 
     /* ── Right Form Grid ── */
     .form-panel {
-        padding: 26px 30px;
+        padding: 28px 32px;
     }
 
     .form-title {
@@ -186,9 +192,9 @@
 
 @include('layouts.navbar')
 
-<div class="container mt-3 mb-4">
+<div class="container profile-outer-container">
     <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
+        <div class="col-lg-10 col-md-11">
             <div class="card profile-card-compact">
                 @php
                     use Illuminate\Support\Facades\File;
