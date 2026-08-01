@@ -53,12 +53,13 @@
     }
 
     .sidebar-avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
+        width: 105px;
+        height: 105px;
+        border-radius: 16px;
+        object-fit: contain;
+        background-color: #f1f5f9;
         border: 3px solid #ffffff;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.18);
     }
 
     .sidebar-avatar-placeholder {

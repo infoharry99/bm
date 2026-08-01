@@ -38,30 +38,32 @@
     }
 
     .member-img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        object-position: center;
+        background-color: #f1f5f9;
+        border-radius: 16px;
         margin: 0 auto 14px auto;
-        border: 4px solid #ffffff;
-        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.15);
+        border: 3px solid #ffffff;
+        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.12);
         display: block;
     }
 
     .auto-avatar {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
         background: linear-gradient(135deg, #4C6BE9, #3046A2);
         color: #ffffff;
-        font-size: 38px;
-        border-radius: 50%;
+        font-size: 42px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 14px auto;
         font-weight: 700;
-        border: 4px solid #ffffff;
-        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.15);
+        border: 3px solid #ffffff;
+        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.12);
     }
 
     .member-name {
