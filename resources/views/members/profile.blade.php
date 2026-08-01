@@ -26,7 +26,7 @@
 
     /* ── Outer Wrapper & Top Margin Centering ── */
     .profile-outer-container {
-        margin-top: 65px !important;
+        margin-top: 165px !important;
         margin-bottom: 60px !important;
     }
 
