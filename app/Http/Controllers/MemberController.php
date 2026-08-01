@@ -138,17 +138,9 @@ class MemberController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        if ($request->has('location')) {
-            $user->location = $request->location;
-        }
-        if ($request->has('uk_location')) {
-            $user->uk_location = $request->uk_location;
-        }
-        if ($request->has('postcode')) {
-            $user->Postcode = $request->postcode;
-        } elseif ($request->has('Postcode')) {
-            $user->Postcode = $request->Postcode;
-        }
+        $user->location = $request->location;
+        $user->uk_location = $request->uk_location;
+        $user->Postcode = $request->postcode ?? $request->Postcode;
 
         if ($request->hasFile('image')) {
             $img = $request->file('image');
