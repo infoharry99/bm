@@ -20,197 +20,164 @@
 
     .navbar {
         top: 0 !important;
-        margin-bottom: 30px !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin-bottom: 20px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
-    /* ── Main Container ── */
-    .profile-card {
+    /* ── Compact Profile Card Layout ── */
+    .profile-card-compact {
         border: none;
-        border-radius: 20px;
-        box-shadow: 0 12px 35px rgba(48, 70, 162, 0.08);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(48, 70, 162, 0.08);
         background: #ffffff;
         overflow: hidden;
-        margin-bottom: 40px;
     }
 
-    /* ── Profile Header ── */
-    .profile-header {
-        background: linear-gradient(135deg, #4C6BE9 0%, #3046A2 100%);
-        padding: 38px 20px 30px 20px;
+    /* ── Left Sidebar Profile Badge ── */
+    .profile-sidebar {
+        background: linear-gradient(145deg, #4C6BE9 0%, #3046A2 100%);
+        color: #ffffff;
+        padding: 30px 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        position: relative;
     }
 
-    .avatar-wrapper {
-        position: relative;
-        display: inline-block;
-        margin-bottom: 12px;
-    }
-
-    .header-avatar-img {
-        width: 110px;
-        height: 110px;
+    .sidebar-avatar {
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
-        border: 4px solid #ffffff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border: 3px solid #ffffff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
-    .auto-avatar {
-        width: 110px;
-        height: 110px;
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(8px);
-        color: #ffffff;
-        font-size: 42px;
+    .sidebar-avatar-placeholder {
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-size: 38px;
+        font-weight: 800;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto;
-        font-weight: 800;
-        border: 4px solid #ffffff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border: 3px solid #ffffff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     }
 
-    .profile-header h5 {
+    .profile-sidebar h5 {
         color: #ffffff !important;
-        font-weight: 700 !important;
-        font-size: 1.4rem;
-        margin-top: 6px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-top: 10px;
         margin-bottom: 2px;
-        letter-spacing: -0.2px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .profile-header small {
-        color: rgba(255, 255, 255, 0.88) !important;
-        font-size: 0.92rem;
-        font-weight: 500;
+    .profile-sidebar small {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 0.84rem;
+        word-break: break-all;
     }
 
-    /* ── Form Styling ── */
-    .card-body-custom {
-        padding: 35px 40px;
+    .upload-btn-label {
+        background: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        padding: 6px 16px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 14px;
+        margin-bottom: 0;
     }
 
-    .section-title {
+    .upload-btn-label:hover {
+        background: #ffffff;
+        color: #3046A2;
+    }
+
+    /* ── Right Form Grid ── */
+    .form-panel {
+        padding: 26px 30px;
+    }
+
+    .form-title {
         font-size: 1.05rem;
         font-weight: 700;
         color: #3046A2;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #edf2f7;
         display: flex;
         align-items: center;
         gap: 8px;
-        border-bottom: 2px solid #edf2f7;
-        padding-bottom: 10px;
     }
 
-    .section-title i {
-        color: #4C6BE9;
-        font-size: 1.1rem;
-    }
-
-    .form-label {
-        font-size: 0.86rem;
+    .form-label-compact {
+        font-size: 0.76rem;
         font-weight: 700;
         color: #4a5568;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.4px;
     }
 
-    .form-control-custom {
-        height: 48px;
-        border-radius: 12px;
+    .form-control-compact {
+        height: 38px;
+        border-radius: 8px;
         border: 1.5px solid #e2e8f0;
-        font-size: 0.95rem;
-        padding: 10px 16px;
+        font-size: 0.88rem;
+        padding: 6px 12px;
         color: #2d3748;
         background-color: #f8fafc;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.15s ease-in-out;
     }
 
-    .form-control-custom:focus {
+    .form-control-compact:focus {
         background-color: #ffffff;
         border-color: #4C6BE9;
-        box-shadow: 0 0 0 4px rgba(76, 107, 233, 0.12);
+        box-shadow: 0 0 0 3px rgba(76, 107, 233, 0.12);
         outline: none;
     }
 
-    /* ── Profile Image Upload Box ── */
-    .image-upload-card {
-        background: #f8fafc;
-        border: 2px dashed #cbd5e1;
-        border-radius: 14px;
-        padding: 16px;
-        transition: border-color 0.2s;
-    }
-
-    .image-upload-card:hover {
-        border-color: #4C6BE9;
-    }
-
-    .custom-file-input-wrapper {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-        width: 100%;
-    }
-
-    .preview-thumb {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #4C6BE9;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    /* ── Buttons ── */
-    .btn-gradient-save {
+    .btn-gradient-compact {
         background: linear-gradient(90deg, #4C6BE9, #3046A2);
         color: #ffffff !important;
         border: none;
-        border-radius: 12px;
-        padding: 12px 32px;
+        border-radius: 8px;
+        padding: 8px 24px;
         font-weight: 700;
-        font-size: 0.98rem;
+        font-size: 0.88rem;
         cursor: pointer;
-        box-shadow: 0 6px 18px rgba(76, 107, 233, 0.3);
-        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(76, 107, 233, 0.25);
+        transition: all 0.15s ease;
     }
 
-    .btn-gradient-save:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 22px rgba(76, 107, 233, 0.4);
+    .btn-gradient-compact:hover {
         opacity: 0.95;
+        transform: translateY(-1px);
     }
 
-    .btn-gradient-save:active {
-        transform: translateY(0);
-    }
-
-    .btn-back {
+    .btn-back-compact {
         background: #edf2f7;
         color: #4a5568 !important;
         font-weight: 600;
-        border-radius: 12px;
-        padding: 12px 24px;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-size: 0.88rem;
         border: none;
-        transition: all 0.2s ease;
+        transition: all 0.15s ease;
     }
 
-    .btn-back:hover {
+    .btn-back-compact:hover {
         background: #e2e8f0;
-        color: #2d3748 !important;
-    }
-
-    @media (max-width: 768px) {
-        .card-body-custom {
-            padding: 24px 20px;
-        }
     }
 </style>
 </head>
@@ -219,162 +186,133 @@
 
 @include('layouts.navbar')
 
-<div class="container mt-4 mb-5">
+<div class="container mt-3 mb-4">
     <div class="row justify-content-center">
-        <div class="col-lg-9 col-md-11">
-            <div class="card profile-card">
+        <div class="col-lg-10 col-md-12">
+            <div class="card profile-card-compact">
                 @php
                     use Illuminate\Support\Facades\File;
                     $hasProfileImg = !empty($user->image) && File::exists(public_path('members/' . $user->image));
                 @endphp
 
-                <!-- Header -->
-                <div class="profile-header text-center">
-                    <div class="avatar-wrapper">
-                        @if($hasProfileImg)
-                            <img src="{{ asset('members/' . $user->image) }}"
-                                id="headerAvatarImg"
-                                class="header-avatar-img" alt="{{ $user->name }}">
-                        @else
-                            <div class="auto-avatar" id="headerAvatarPlaceholder">
-                                {{ strtoupper(substr($user->name ?? 'M', 0, 1)) }}
-                            </div>
-                        @endif
-                    </div>
-                    <h5>{{ $user->name }}</h5>
-                    <small><i class="fas fa-envelope mr-1 opacity-75"></i> {{ $user->email }}</small>
-                </div>
+                <form method="POST" action="/profile-update" enctype="multipart/form-data">
+                    @csrf
 
-                <div class="card-body-custom">
+                    <div class="row no-gutters">
+                        <!-- LEFT SIDEBAR: Photo & Member Info -->
+                        <div class="col-md-4">
+                            <div class="profile-sidebar">
+                                @if($hasProfileImg)
+                                    <img src="{{ asset('members/' . $user->image) }}"
+                                        id="sidebarAvatarImg"
+                                        class="sidebar-avatar" alt="{{ $user->name }}">
+                                @else
+                                    <div class="sidebar-avatar-placeholder" id="sidebarAvatarPlaceholder">
+                                        {{ strtoupper(substr($user->name ?? 'M', 0, 1)) }}
+                                    </div>
+                                    <img src="" id="sidebarAvatarImg" class="sidebar-avatar" style="display:none;" alt="Preview">
+                                @endif
 
-                    <!-- Alerts -->
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-lg mb-4" role="alert" style="background:#e6fffa; color:#234e52; border-left: 4px solid #319795 !important;">
-                            <i class="fas fa-check-circle mr-2 text-teal"></i> {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
+                                <h5>{{ $user->name }}</h5>
+                                <small><i class="fas fa-envelope mr-1 opacity-75"></i> {{ $user->email }}</small>
 
-                    @if(isset($errors) && $errors->any())
-                        <div class="alert alert-danger border-0 shadow-sm rounded-lg mb-4" style="background:#fff5f5; color:#742a2a; border-left: 4px solid #e53e3e !important;">
-                            <i class="fas fa-exclamation-circle mr-2"></i> <strong>Please resolve the following errors:</strong>
-                            <ul class="mb-0 mt-2 pl-3">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form method="POST" action="/profile-update" enctype="multipart/form-data">
-                        @csrf
-
-                        <!-- SECTION 1: PERSONAL INFORMATION -->
-                        <div class="section-title">
-                            <i class="fas fa-user-circle"></i> Personal Information
-                        </div>
-
-                        <div class="row">
-                            <!-- Name -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control form-control-custom"
-                                    value="{{ old('name', $user->name) }}" placeholder="Enter full name" required>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Email Address <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control form-control-custom"
-                                    value="{{ old('email', $user->email) }}" placeholder="you@example.com" required>
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Phone Number</label>
-                                <input type="text" name="phone" class="form-control form-control-custom"
-                                    value="{{ old('phone', $user->phone) }}" placeholder="+44 7000 000000">
+                                <!-- Change Photo Button -->
+                                <label for="profileImageInput" class="upload-btn-label">
+                                    <i class="fas fa-camera mr-1"></i> Change Photo
+                                </label>
+                                <input type="file" name="image" id="profileImageInput" accept="image/*" class="d-none">
+                                <small class="mt-2 text-white-50" style="font-size: 0.72rem;">JPG, PNG or WEBP</small>
                             </div>
                         </div>
 
-                        <!-- SECTION 2: LOCATION DETAILS -->
-                        <div class="section-title mt-4">
-                            <i class="fas fa-map-marker-alt"></i> Location Details
-                        </div>
+                        <!-- RIGHT MAIN PANEL: Compact Form Fields -->
+                        <div class="col-md-8">
+                            <div class="form-panel">
+                                <div class="form-title">
+                                    <i class="fas fa-user-edit text-primary"></i> Edit Profile
+                                </div>
 
-                        <div class="row">
-                            <!-- Bihar Location -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Bihar Location</label>
-                                <input type="text" name="location" class="form-control form-control-custom"
-                                    value="{{ old('location', $user->location) }}" placeholder="District / Village in Bihar">
-                            </div>
+                                <!-- Alerts -->
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show p-2 mb-3 border-0 rounded" role="alert" style="background:#e6fffa; color:#234e52; font-size:0.85rem;">
+                                        <i class="fas fa-check-circle mr-1"></i> {{ session('success') }}
+                                        <button type="button" class="close p-2" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
 
-                            <!-- UK Location -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">UK Location</label>
-                                <input type="text" name="uk_location" class="form-control form-control-custom"
-                                    value="{{ old('uk_location', $user->uk_location) }}" placeholder="City / Town in UK">
-                            </div>
+                                @if(isset($errors) && $errors->any())
+                                    <div class="alert alert-danger p-2 mb-3 border-0 rounded" style="background:#fff5f5; color:#742a2a; font-size:0.85rem;">
+                                        <i class="fas fa-exclamation-circle mr-1"></i> 
+                                        @foreach ($errors->all() as $error)
+                                            <span>{{ $error }}</span>
+                                        @endforeach
+                                    </div>
+                                @endif
 
-                            <!-- Postcode -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Postcode</label>
-                                <input type="text" name="postcode" class="form-control form-control-custom"
-                                    value="{{ old('postcode', $user->Postcode ?? $user->postcode) }}" placeholder="e.g. SW1A 1AA">
-                            </div>
-                        </div>
+                                <!-- Row 1: Name & Email -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">Full Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" class="form-control form-control-compact"
+                                            value="{{ old('name', $user->name) }}" required>
+                                    </div>
 
-                        <!-- SECTION 3: PROFILE PICTURE -->
-                        <div class="section-title mt-4">
-                            <i class="fas fa-camera"></i> Profile Picture
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <div class="image-upload-card">
-                                    <div class="d-flex align-items-center flex-wrap gap-3" style="gap: 16px;">
-                                        <div>
-                                            @if($hasProfileImg)
-                                                <img src="{{ asset('members/' . $user->image) }}"
-                                                    id="profileImagePreview"
-                                                    class="preview-thumb" alt="Profile Preview">
-                                            @else
-                                                <img src="" id="profileImagePreview"
-                                                    class="preview-thumb" style="display:none;" alt="Profile Preview">
-                                                <div id="noImageBadge" class="d-flex align-items-center justify-content-center bg-light text-secondary rounded-circle" style="width:64px; height:64px; border:2px dashed #cbd5e1;">
-                                                    <i class="fas fa-user fa-lg"></i>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <div class="flex-grow-1">
-                                            <label class="form-label mb-1">Upload New Photo</label>
-                                            <input type="file" name="image" id="profileImageInput"
-                                                class="form-control-file form-control-custom" accept="image/*" style="padding: 8px;">
-                                            <small class="text-muted d-block mt-1">Supported formats: JPG, PNG, WEBP (Max: 4MB)</small>
-                                        </div>
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">Email Address <span class="text-danger">*</span></label>
+                                        <input type="email" name="email" class="form-control form-control-compact"
+                                            value="{{ old('email', $user->email) }}" required>
                                     </div>
                                 </div>
+
+                                <!-- Row 2: Phone & Postcode -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">Phone Number</label>
+                                        <input type="text" name="phone" class="form-control form-control-compact"
+                                            value="{{ old('phone', $user->phone) }}" placeholder="+44 7000 000000">
+                                    </div>
+
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">Postcode</label>
+                                        <input type="text" name="postcode" class="form-control form-control-compact"
+                                            value="{{ old('postcode', $user->Postcode ?? $user->postcode) }}" placeholder="e.g. SW1A 1AA">
+                                    </div>
+                                </div>
+
+                                <!-- Row 3: Bihar Location & UK Location -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">Bihar Location</label>
+                                        <input type="text" name="location" class="form-control form-control-compact"
+                                            value="{{ old('location', $user->location) }}" placeholder="District / Village">
+                                    </div>
+
+                                    <div class="form-group col-md-6 mb-2">
+                                        <label class="form-label-compact">UK Location</label>
+                                        <input type="text" name="uk_location" class="form-control form-control-compact"
+                                            value="{{ old('uk_location', $user->uk_location) }}" placeholder="City / Town">
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                                    <a href="/" class="btn btn-back-compact">
+                                        <i class="fas fa-arrow-left mr-1"></i> Back
+                                    </a>
+
+                                    <button type="submit" class="btn btn-gradient-compact">
+                                        <i class="fas fa-save mr-1"></i> Save Changes
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
+                    </div>
 
-                        <!-- BUTTONS -->
-                        <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
-                            <a href="/" class="btn btn-back">
-                                <i class="fas fa-arrow-left mr-2"></i> Back
-                            </a>
+                </form>
 
-                            <button type="submit" class="btn btn-gradient-save">
-                                <i class="fas fa-save mr-2"></i> Save Changes
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
             </div>
         </div>
     </div>
@@ -385,18 +323,17 @@
 <script>
     document.getElementById('profileImageInput').addEventListener('change', function(e) {
         var file = e.target.files[0];
-        var preview = document.getElementById('profileImagePreview');
-        var badge = document.getElementById('noImageBadge');
         if (file) {
             var url = URL.createObjectURL(file);
-            preview.src = url;
-            preview.style.display = 'block';
-            if (badge) badge.style.display = 'none';
+            var avatarImg = document.getElementById('sidebarAvatarImg');
+            var placeholder = document.getElementById('sidebarAvatarPlaceholder');
 
-            // Also update header preview avatar
-            var headerImg = document.getElementById('headerAvatarImg');
-            if (headerImg) {
-                headerImg.src = url;
+            if (avatarImg) {
+                avatarImg.src = url;
+                avatarImg.style.display = 'block';
+            }
+            if (placeholder) {
+                placeholder.style.display = 'none';
             }
         }
     });
