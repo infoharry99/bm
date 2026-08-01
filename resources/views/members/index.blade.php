@@ -18,37 +18,115 @@
 
     /* ── Member Cards ── */
     .member-card {
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        padding: 20px;
-        transition: 0.3s;
-        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+        padding: 24px 18px;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background: #ffffff;
+        border: 1px solid #edf2f7;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .member-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(48, 70, 162, 0.14);
+        border-color: #cbd5e1;
     }
 
     .member-img {
-        height: 180px;
-        width: 100%;
+        width: 120px;
+        height: 120px;
         object-fit: cover;
-        border-radius: 12px;
+        border-radius: 50%;
+        margin: 0 auto 14px auto;
+        border: 4px solid #ffffff;
+        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.15);
+        display: block;
     }
 
     .auto-avatar {
         width: 120px;
         height: 120px;
-        background: #0D8ABC;
-        color: #fff;
-        font-size: 40px;
+        background: linear-gradient(135deg, #4C6BE9, #3046A2);
+        color: #ffffff;
+        font-size: 38px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto;
-        font-weight: bold;
+        margin: 0 auto 14px auto;
+        font-weight: 700;
+        border: 4px solid #ffffff;
+        box-shadow: 0 6px 18px rgba(48, 70, 162, 0.15);
+    }
+
+    .member-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .location-pills-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .location-pill {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .bihar-pill {
+        background-color: #ebf8ff;
+        color: #2b6cb0;
+        border: 1px solid #bee3f8;
+    }
+
+    .uk-pill {
+        background-color: #f0fff4;
+        color: #276749;
+        border: 1px solid #c6f6d5;
+    }
+
+    .muted-pill {
+        background-color: #f7fafc;
+        color: #718096;
+        border: 1px solid #e2e8f0;
+    }
+
+    .btn-message {
+        background: linear-gradient(90deg, #4C6BE9, #3046A2);
+        color: #ffffff !important;
+        border-radius: 20px;
+        padding: 8px 22px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        text-decoration: none !important;
+        box-shadow: 0 4px 12px rgba(76, 107, 233, 0.25);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .btn-message:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(76, 107, 233, 0.35);
+        opacity: 0.95;
     }
 
     /* ── Form Card ── */
@@ -346,30 +424,36 @@
             data-uk="{{ strtolower($m->uk_location ?? '') }}">
 
             <div class="member-card text-center">
+                <div>
+                    @if($hasImage)
+                        <img src="{{ asset('members/' . $m->image) }}"
+                            class="member-img"
+                            alt="{{ $m->name }}">
+                    @else
+                        <div class="auto-avatar">
+                            {{ $initials }}
+                        </div>
+                    @endif
 
-                @if($hasImage)
-                    <img src="{{ asset('members/' . $m->image) }}"
-                        class="member-img mb-3"
-                        alt="{{ $m->name }}">
-                @else
-                    <div class="auto-avatar mb-3">
-                        {{ $initials }}
+                    <h5 class="member-name">{{ $m->name }}</h5>
+
+                    <div class="location-pills-wrap">
+                        @if(!empty($m->location))
+                            <span class="location-pill bihar-pill"><i class="fas fa-map-marker-alt"></i> {{ $m->location }}</span>
+                        @endif
+                        @if(!empty($m->uk_location))
+                            <span class="location-pill uk-pill"><i class="fas fa-city"></i> {{ $m->uk_location }}</span>
+                        @endif
+                        @if(empty($m->location) && empty($m->uk_location))
+                            <span class="location-pill muted-pill"><i class="fas fa-globe"></i> Member</span>
+                        @endif
                     </div>
-                @endif
-
-                <h5>{{ $m->name }}</h5>
-
-                <p class="text-muted small mb-2">
-                    Bihar: {{ $m->location ?? '-' }}<br>
-                    UK: {{ $m->uk_location ?? '-' }}
-                </p>
+                </div>
 
                 <!-- MESSAGE BUTTON -->
-                <a href="{{ route('member.message', $m->id) }}"
-                class="btn btn-primary btn-sm mt-2">
-                    <i class="fa fa-envelope"></i> Message
+                <a href="{{ route('member.message', $m->id) }}" class="btn-message mt-2">
+                    <i class="fas fa-envelope"></i> Message
                 </a>
-
             </div>
         </div>
 
